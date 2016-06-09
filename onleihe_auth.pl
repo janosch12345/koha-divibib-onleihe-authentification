@@ -24,7 +24,7 @@ my $today = DateTime->today->date;
 
 
 #user credentials
-my $userid = $query->param('sno');#cseidel (userid) oder 0603(cardnumber)
+my $userid = $query->param('sno');
 my $password = $query->param('pwd');
 
 #empty credentials
@@ -32,7 +32,7 @@ if ($userid eq "" or $password eq ""){
 	my $ds = {
 		status => [-1],
 		fsk => [0],
-		library => ['<![CDATA[Wildau]]>']
+		library => ['<![CDATA[libraryname]]>']
 	};
 	my $xml;
 	$xml = XMLout($ds,XMLDecl => '<?xml version="1.0" encoding="UTF-8"?>',RootName => "response");
@@ -50,7 +50,7 @@ my $fsk = getFSK($age);
 my $ds = {
 	status => [$status],
 	fsk => [$fsk],
-	library => ['<![CDATA[Wildau]]>']
+	library => ['<![CDATA[libraryname]]>']
 };
 my $xml;
 $xml = XMLout($ds,XMLDecl => '<?xml version="1.0" encoding="UTF-8"?>',RootName => "response");
