@@ -4,7 +4,13 @@ This script enables 3rd parties to authorize patrons of a koha library.
 For example the patron logs in in the German onleihe (ebook portal) with its koha credentials and the 3rd party checks against this script to see:
 - if the user exists
 - if the credentials are matching
-- age 
+- age
+
+in form of an XML
+
+```xml
+<response><fsk>0</fsk><library><![CDATA[libraryname]]></library><status>-1</status></response>
+```
 
 ### Installation
 
