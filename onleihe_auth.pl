@@ -1,6 +1,5 @@
 #!/usr/bin/perl
 
-# Author Jan Kissig 2014
 
 use strict;
 use warnings;
