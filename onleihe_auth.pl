@@ -97,7 +97,9 @@ sub getUser {
 
         	if ( checkpw_hash($password, $stored_hash) ) {
 			#valid usercredentials
-			my ( $borr ) = C4::Members::GetMemberDetails( $borrowernumber );
+			#my ( $borr ) = C4::Members::GetMemberDetails( $borrowernumber );
+			my ( $borr ) = GetMember( borrowernumber => $borrowernumber );
+			
 			#gesperrter user - debarred
 			return("1","0") if defined ($borr->{'debarred'});#gesperrt status = 1
 			#nutzerausweis abgelaufen - expired
@@ -120,7 +122,9 @@ sub getUser {
 
 			if ( checkpw_hash($password, $stored_hash) ) {
 					#valid usercredentials
-				my ( $borr ) = C4::Members::GetMemberDetails( $borrowernumber );
+				#my ( $borr ) = C4::Members::GetMemberDetails( $borrowernumber );
+				my ( $borr ) = GetMember( borrowernumber => $borrowernumber );
+				
 				#gesperrter user - debarred
 				return("1","0") if defined ($borr->{'debarred'});#gesperrt status = 1
 				#nutzerausweis abgelaufen - expired
