@@ -98,7 +98,8 @@ sub getUser {
         	if ( checkpw_hash($password, $stored_hash) ) {
 			#valid usercredentials
 			#my ( $borr ) = C4::Members::GetMemberDetails( $borrowernumber );
-			my ( $borr ) = GetMember( borrowernumber => $borrowernumber );
+			#my ( $borr ) = GetMember( borrowernumber => $borrowernumber );
+			my $borr = Koha::Patrons->find( $borrowernumber )->unblessed;
 			
 			#gesperrter user - debarred
 			return("1","0") if defined ($borr->{'debarred'});#gesperrt status = 1
@@ -123,7 +124,8 @@ sub getUser {
 			if ( checkpw_hash($password, $stored_hash) ) {
 					#valid usercredentials
 				#my ( $borr ) = C4::Members::GetMemberDetails( $borrowernumber );
-				my ( $borr ) = GetMember( borrowernumber => $borrowernumber );
+				#my ( $borr ) = GetMember( borrowernumber => $borrowernumber );
+				my $borr = Koha::Patrons->find( $borrowernumber )->unblessed;
 				
 				#gesperrter user - debarred
 				return("1","0") if defined ($borr->{'debarred'});#gesperrt status = 1
